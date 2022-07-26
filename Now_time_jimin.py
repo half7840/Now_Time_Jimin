@@ -5,7 +5,6 @@ import sys
 import zoneinfo
 import pytz
 import asyncio
-import schedule
 from apscheduler.triggers.cron import CronTrigger
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from discord.ext import commands
@@ -65,15 +64,6 @@ time_module()
 @bot.event
 async def on_ready():
     channel = bot.get_channel(915862213074493543)
-    await channel.send(f"지짐시, {386099935163973634}")
-@bot.command()
-async def 소환(ctx):
-    await ctx.send('쥐미나 @')
+    await channel.send("**<@386099935163973634> 지짐시**")
 
-@bot.command()
-async def 지짐시(ctx):
-    nowtime = datetime.now(timezone('Asia/Seoul'))
-    await ctx.send('쥐금 시간')
-    await ctx.send(nowtime)
-
-bot.run('MTAwMTUwOTg4Mjg4Njg4MTI4MA.GXRAe7.DXfc7RDPO_6wmfiVQIJ2eEVyl8qS6utg7Q22Fs')
+bot.run("MTAwMTUwOTg4Mjg4Njg4MTI4MA.GoEBhL.kDyy0fl7LIU3MMmoEpA8BF8rK7h0Qjd_Qbc7iw")
