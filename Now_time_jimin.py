@@ -15,9 +15,75 @@ async def func():
     await ctx.send("지짐시")
 @bot.event
 async def now_time():
-    await client.wait.uni
+    await client.wait.until_ready()
+    channel = client.get_channel(915862213074493540)
+    msg_send = False
 
+    while True:
+        if time.hour == 01 and time.minute == 11:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
 
+        if time.hour == 02 and time.minute == 22:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
+        
+        if time.hour == 02 and time.minute == 06:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
+        if time.hour == 03 and time.minute == 33:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
+
+        if time.hour == 04  and time.minute == 44:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
+
+        if time.hour == 05 and time.minute == 55:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
+
+        if time.hour == 13  and time.minute == 11:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
+
+        if time.hour == 14 and time.minute == 22:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
+
+        if time.hour == 15  and time.minute == 33:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
+
+        if time.hour == 16 and time.minute == 44:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
+
+        if time.hour == 17 and time.minute == 55:
+            await channel.send("지짐시")
+            msg_sent = True
+        else:
+            msg_sent = True
 #@bot.event
 #async def on_ready():
     #scheduler = AsyncIOScheduler()
