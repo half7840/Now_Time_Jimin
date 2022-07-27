@@ -12,9 +12,8 @@ from datetime import datetime
 from datetime import date
 from pytz import timezone
 
-datetime.now(timezone('Asia/Seoul'))
-time = datetime.now(timezone('Asia/Seoul'))
 bot = commands.Bot(command_prefix="./")
+
 def time_module():
     print("time module in use")
     while True:
@@ -37,6 +36,18 @@ def time_module():
         
         if current_time == "05:55":
             print("time module ended")    
+            break
+
+        if current_time == "10:10":
+            print("time module ended")
+            break
+
+        if current_time == "11:11":
+            print("time module ended")
+            break
+
+        if current_time == "12:12":
+            print("time module ended")
             break
 
         if current_time == "13:11":
@@ -65,5 +76,7 @@ time_module()
 async def on_ready():
     channel = bot.get_channel(915862213074493543)
     await channel.send("**<@386099935163973634> 지짐시**")
+    time.sleep(60)
+    time_module()
 
 bot.run("MTAwMTUwOTg4Mjg4Njg4MTI4MA.GoEBhL.kDyy0fl7LIU3MMmoEpA8BF8rK7h0Qjd_Qbc7iw")
