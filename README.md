@@ -1,3 +1,4 @@
+![profile](/Users/minsukim/Desktop/rastras.png)
 # 지짐시 Now Time Jimin!
 ---
 매 시간마다 **지짐시**를 보내기에 지치졌죠?
