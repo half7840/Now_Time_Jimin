@@ -70,6 +70,13 @@ def time_module():
             print("time module ended")
             break
 
+        if current_time == "22:10":
+            print("time module ended")
+            break        
+
+        if current_time == "23:11":
+            print("time module ended")
+            break
 time_module()
 
 @bot.event
