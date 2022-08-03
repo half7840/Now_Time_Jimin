@@ -16,93 +16,79 @@ from pytz import timezone
 bot = commands.Bot(command_prefix="./")
 
 current_time = datetime.now(timezone('Asia/Seoul')).strftime("%H:%M")
+
 global next_jime
 
 @bot.event
 async def on_ready():
     print('다음으로 로그인합니다 : ')
     print(bot.user.name)
-    print('connection was succesful')
+    print('로그인에 성공했습니다')
     await bot.change_presence(status=discord.Status.online, activity=None)
-
 
 def set_next_jime():
     while True:
         if current_time > "01:11" and current_time < "02:22":
             next_jime = "02:22"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
-
-        if current_time > "02:22" and current_time < "03:33":
-            next_jime = "03:33"
-            print("다음 지짐시는", next_jime, "입니다.")
-            break
-
-        if current_time > "03:33" and current_time < "04:44":
-            next_jime = "04:44"
-            print("다음 지짐시는", next_jime, "입니다.")
-            break
-
-        if current_time > "04:44" and current_time < "05:55":
-            next_jime = "05:55"
-            print("다음 지짐시는", next_jime, "입니다.")
-            break
-
-        if current_time > "05:55" and current_time < "10:10":
-            next_jime = "10:10"
-            print("다음 지짐시는", next_jime, "입니다.")
-            break
-
+        else:
+            if current_time > "02:22" and current_time < "03:33":
+                next_jime = "03:33"
+                print("다음 지짐시는", next_jime, "입니다.")
+            else:
+                if current_time > "03:33" and current_time < "04:44":
+                     next_jime = "04:44"
+                    print("다음 지짐시는", next_jime, "입니다.")
+                else:
+                    if current_time > "04:44" and current_time < "05:55":
+                        next_jime = "05:55"
+                        print("다음 지짐시는", next_jime, "입니다.")
+                    else:
+                        if current_time > "05:55" and current_time < "10:10":
+                            next_jime = "10:10"
+                            print("다음 지짐시는", next_jime, "입니다.")
+                        else:
         if current_time > "10:10" and current_time < "11:11":
             next_jime = "11:11"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
-
+                            else:
         if current_time > "11:11" and current_time < "12:12":
             next_jime = "12:12"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
-
+                                else:
         if current_time > "12:12" and current_time < "13:11":
             next_jime = "13:11"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
-
+                                else:
         if current_time > "13:11" and current_time < "14:22":
             next_jime = "14:22"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
-
+                                                
         if current_time > "14:22" and current_time < "15:33":
             next_jime = "15:33"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
 
         if current_time > "15:33" and current_time < "16:44":
             next_jime = "16:44"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
 
         if current_time > "16:44" and current_time < "17:55":
             next_jime = "17:55"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
 
         if current_time > "17:55" and current_time < "22:10":
             next_jime = "22:10"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
 
         if current_time > "22:10" and current_time < "23:11":
             next_jime = "23:11"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
 
         if current_time > "23:11":
             next_jime = "01:11"
             print("다음 지짐시는", next_jime, "입니다.")
-            break
         
+    cal_time()
 
 def cal_time():
     while True:
