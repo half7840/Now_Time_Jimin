@@ -89,7 +89,7 @@ def set_next_time():
 @bot.event
 async def now_time_jimin():
     channel = bot.get_channel(915862213074493543)
-    await channel.send("**<386099935163973634> 지짐시**")
+    await channel.send("**<@386099935163973634> 지짐시**")
     await asyncio.sleep(60)
     await cal_time()
 
@@ -104,19 +104,6 @@ async def cal_time():
                 await asyncio.sleep(60)
                 await cal_time()
                 break
-
-
-#def cal_time():
-#    print("호출됨")
-#    while:
-#       if current_time==next_time:
-#           print("지짐시를 실행합니다")
-#   else:
-#         if current_time!=next_time:
-
-
-#instance = Time_Module.
-#instance.wait()
 
 @bot.command()
 async def 지짐시(ctx):
