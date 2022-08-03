@@ -1,3 +1,4 @@
+from tkinter import NE
 import discord
 import time
 import datetime
@@ -16,16 +17,6 @@ from pytz import timezone
 bot = commands.Bot(command_prefix="./")
 
 current_time = datetime.now(timezone('Asia/Seoul')).strftime("%H:%M")
-global next_jime
-
-@bot.event
-async def on_ready():
-    print('다음으로 로그인합니다 : ')
-    print(bot.user.name)
-    print('connection was succesful')
-    await bot.change_presence(status=discord.Status.online, activity=None)
-
-
 def set_next_jime():
     while True:
         if current_time > "01:11" and current_time < "02:22":
@@ -102,30 +93,28 @@ def set_next_jime():
             next_jime = "01:11"
             print("다음 지짐시는", next_jime, "입니다.")
             break
-        
 
-def cal_time():
-    while True:
-        if current_time==next_jime:
-            print("지짐시를 실행합니다")
-            asyncio.run(now_time_jimin)
-            break
-        else:
-            asyncio.sleep(60)
-            print("실패")
-            cal_time()
 
+
+
+#schedule.every().day.at("01:11").do(job) 
+#schedule.every().day.at("02:22").do(job) 
+#schedule.every().day.at("03:33").do(job) 
+#schedule.every().day.at("04:44").do(job) 
+#schedule.every().day.at("05:55").do(job) 
+#schedule.every().day.at("").do(job) 
+#schedule.every().day.at("").do(job) 
+#schedule.every().day.at("").do(job) 
+#schedule.every().day.at("").do(job) 
+#schedule.every().day.at("").do(job) 
+#schedule.every().day.at("").do(job) 
+#schedule.every().day.at("").do(job) 
+#schedule.every().day.at("").do(job) 
+#schedule.every().day.at("").do(job) 
+#schedule.every().day.at("").do(job) 
 @bot.event
 async def now_time_jimin():
     channel = bot.get_channel(915862213074493543)
-    await channel.send("** 지짐시**")
-
-
-@bot.command()
-async def 지짐시(ctx):
-    global next_jime
-    print(current_time)
-    await ctx.channel.send(f'다음 지짐시는 {next_jime}입니다.')
-
-
-bot.run("MTAwMTUwOTg4Mjg4Njg4MTI4MA.GoEBhL.kDyy0fl7LIU3MMmoEpA8BF8rK7h0Qjd_Qbc7iw")
+    await channel.send("**<386099935163973634> 지짐시**")
+    time.sleep(60)
+    time_module()
