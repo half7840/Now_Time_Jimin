@@ -1,18 +1,10 @@
-
-from re import I
 import discord
 import time
 import datetime
-import sys
 import zoneinfo
 import pytz
 import asyncio
 import tasks
-import schedule
-import tkinter
-import Time_Module
-from apscheduler.triggers.cron import CronTrigger
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from discord.ext import commands
 from discord.ext import tasks
 from datetime import datetime
