@@ -101,7 +101,7 @@ async def cal_time():
             break
         else:
             if current_time!=next_time:
-                await asyncio.sleep(60)
+                await asyncio.sleep(30)
                 await cal_time()
                 break
 
