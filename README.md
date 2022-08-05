@@ -1,4 +1,5 @@
-![profile](/Users/minsukim/Desktop/rastras.png)
+![now_time_jimin_profile](https://user-images.githubusercontent.com/83526896/183144205-fbe31175-5a56-486a-8776-64c48b9468ef.png)
+
 # 지짐시 Now Time Jimin!
 ---
 매 시간마다 **지짐시**를 보내기에 지치졌죠?
