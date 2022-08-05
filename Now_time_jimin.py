@@ -1,3 +1,4 @@
+
 import discord
 import time
 import datetime
@@ -117,22 +118,10 @@ async def 지짐시(ctx):
 async def 진정(ctx):
     await ctx.channel.send(f"{ctx.message.mentions[0].mention}, {ctx.message.author.mention}(이)가 진정하래")
 
-#@bot.event #지민 진정 기능
-#async def on_message(message):
-#    if "ㅅㅂ" in message.content: 
-#        msg = await message.channel.send(f"{message.author.mention} 진정")
-#        await asyncio.sleep(0.5)
-#        await msg.delete()
-
-now = datetime.now()
-time = f"{str(now.year)}년 {str(now.month)}월 {str(now.day)}일 {str(now.hour)}시 {str(now.minute)}분 {str(now.second)}초"
-
-@bot.event
-async def on_message_delete(message):
-    channel = bot.get_channel(1004709248422387722)
-    embed = discord.Embed(title=f"삭제됨", description=f"유저 : {message.author.mention} 채널 : {message.channel.mention}", color=0xFF0000)
-    embed.add_field(name="삭제된 내용", value=f"내용 : {message.content}", inline=False)
-    embed.set_footer(text=f"{message.guild.name} | {time}")
-    await channel.send(embed=embed)
-
+@bot.event #지민 진정 기능
+async def on_message(message):
+    if "ㅅㅂ" in message.content: 
+        msg = await message.channel.send(f"{message.author.mention} 진정")
+        await asyncio.sleep(0.5)
+        await msg.delete()
 bot.run("MTAwMTUwOTg4Mjg4Njg4MTI4MA.GoEBhL.kDyy0fl7LIU3MMmoEpA8BF8rK7h0Qjd_Qbc7iw")
