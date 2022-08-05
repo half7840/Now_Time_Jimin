@@ -16,6 +16,8 @@ bot = commands.Bot(command_prefix="!")
 
 current_time = datetime.now(timezone('Asia/Seoul')).strftime("%H:%M")
 
+global next_time
+
 next_time = 0 
 
 @bot.event
@@ -24,7 +26,8 @@ async def on_ready():
     print(bot.user.name)
     print('로그인에 성공했습니다')
     await bot.change_presence(status=discord.Status.online, activity=None)
-    await cal_time()    
+    await cal_time()
+    set_next_time()
 
 def set_next_time():
     global next_time
@@ -93,12 +96,13 @@ def set_next_time():
 async def now_time_jimin():
     print(current_time, "지짐시 호출됨")
     channel = bot.get_channel(915862213074493543)
-    await channel.send("**<=@386099935163973634> 지짐시**")
+    await channel.send("**<@386099935163973634> 지짐시**")
     await asyncio.sleep(60)
-    await cal_time()
+    await cal_time
 
 async def cal_time():
     global next_time
+    print("arst")
     set_next_time()
     while True:
         if current_time==next_time:
