@@ -12,11 +12,12 @@ from datetime import datetime
 from datetime import date
 from pytz import timezone
 
-bot = commands.Bot(command_prefix="./")
+bot = commands.Bot(command_prefix="!")
 
 current_time = datetime.now(timezone('Asia/Seoul')).strftime("%H:%M")
 
 next_time = 0 
+
 @bot.event
 async def on_ready():
     print('다음으로 로그인합니다 : ')
@@ -90,6 +91,7 @@ def set_next_time():
 
 @bot.event
 async def now_time_jimin():
+    print(current_time, "지짐시 호출됨")
     channel = bot.get_channel(915862213074493543)
     await channel.send("**<=@386099935163973634> 지짐시**")
     await asyncio.sleep(60)
@@ -110,18 +112,17 @@ async def cal_time():
 
 @bot.command()
 async def 지짐시(ctx):
+    print(current_time, "다음 지짐시 호출됨")
     global next_time
     print(next_time)
     await ctx.channel.send(f'다음 지짐시는 {next_time}입니다.')
 
-@bot.command()
-async def 진정(ctx):
-    await ctx.channel.send(f"{ctx.message.mentions[0].mention}, {ctx.message.author.mention}(이)가 진정하래")
 
-@bot.event #지민 진정 기능
-async def on_message(message):
-    if "ㅅㅂ" in message.content: 
-        msg = await message.channel.send(f"{message.author.mention} 진정")
-        await asyncio.sleep(0.5)
-        await msg.delete()
+#@bot.event #지민 진정 기능
+#async def on_message(message):
+#    if "ㅅㅂ" in message.content: 
+#        msg = await message.channel.send(f"{message.author.mention} 진정")
+#        await asyncio.sleep(0.5)
+#        await msg.delete()
+
 bot.run("MTAwMTUwOTg4Mjg4Njg4MTI4MA.GoEBhL.kDyy0fl7LIU3MMmoEpA8BF8rK7h0Qjd_Qbc7iw")
