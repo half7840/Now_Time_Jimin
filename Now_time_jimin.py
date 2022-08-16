@@ -24,7 +24,7 @@ async def on_ready():
     print('다음으로 로그인합니다 : ')
     print(bot.user.name)
     print('로그인에 성공했습니다')
-    await bot.change_presence(status=discord.Status.online, activity=None)
+    await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name='이지민 레이프'))
     await cal_time()    
 
 def set_next_time():
@@ -101,11 +101,11 @@ async def cal_time():
     global next_time
     set_next_time()
     while True:
-        if datetime.now(timezone('Asia/Seoul')).strftime("%H:%M") ==next_time:
+        if datetime.now(timezone('Asia/Seoul')).strftime("%H:%M") == next_time:
             await now_time_jimin()
             break
         else:
-            if  datetime.now(timezone('Asia/Seoul')).strftime("%H:%M") !=next_time:
+            if  datetime.now(timezone('Asia/Seoul')).strftime("%H:%M") != next_time:
                 await asyncio.sleep(30)
                 await cal_time()
                 break
