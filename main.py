@@ -14,6 +14,8 @@ from datetime import date
 from dotenv import load_dotenv
 from pytz import timezone
 
+load_dotenv()
+
 intents = discord.Intents().all()
 bot = commands.Bot(intents=intents, command_prefix="!")
 
@@ -30,6 +32,8 @@ async def on_ready():
     print('로그인에 성공했습니다')
     print(current_time)
     await cal_time()    
+
+
 
 def set_next_time():
     global next_time
@@ -131,19 +135,17 @@ async def cal_time():
     while True:
         if datetime.now(timezone('Asia/Seoul')).strftime("%H:%M") == next_time:
             await now_time_jimin()
-            await asyncio.sleep(70)
             await cal_time()
             break
         else:
             if  datetime.now(timezone('Asia/Seoul')).strftime("%H:%M") != next_time:
-                await asyncio.sleep(10)
                 await cal_time()
                 break
+    await asyncio.sleep(70)
 
 @bot.event
 async def now_time_jimin():
     channel = bot.get_channel(915862213074493543)
-    channel = bot.get_channel(1004294059948511244)
     await channel.send("**지짐시**")
 
 @bot.command()
@@ -164,4 +166,4 @@ async def 진정(ctx):
 #        await asyncio.sleep(0.5)
 #        await msg.delete()
 
-bot.run("MTAwMTUwOTg4Mjg4Njg4MTI4MA.GEB232.co-RmXoaRtRjbqCKWGMg2fteegT-UQjg2AWaj0")
+bot.run(os.getenv('TOKEN'))
