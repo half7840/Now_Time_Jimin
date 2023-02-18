@@ -3,6 +3,7 @@ import discord
 import time
 import datetime
 import zoneinfo
+from discord.client import PrivilegedIntentsRequired
 import pytz
 import asyncio
 import tasks
@@ -32,8 +33,6 @@ async def on_ready():
     print('로그인에 성공했습니다')
     print(current_time)
     await cal_time()    
-
-
 
 def set_next_time():
     global next_time
@@ -135,12 +134,9 @@ async def cal_time():
     while True:
         if datetime.now(timezone('Asia/Seoul')).strftime("%H:%M") == next_time:
             await now_time_jimin()
-            await cal_time()
             break
-        else:
-            if  datetime.now(timezone('Asia/Seoul')).strftime("%H:%M") != next_time:
-                await cal_time()
-                break
+        elif datetime.now(timezone('Asia/Seoul')).strftime("%H:%M") != next_time:
+            break
     await asyncio.sleep(70)
 
 @bot.event
