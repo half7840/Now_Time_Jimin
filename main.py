@@ -25,7 +25,7 @@ current_time = datetime.now(timezone('Asia/Seoul')).strftime("%H:%M")
 global next_time
 
 next_time = "00:00"
-
+#arst
 @bot.event
 async def on_ready():
     print('다음으로 로그인합니다 : ')
