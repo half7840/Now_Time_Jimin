@@ -20,12 +20,39 @@ load_dotenv()
 intents = discord.Intents().all()
 bot = commands.Bot(intents=intents, command_prefix="!")
 
+global current_time
+
 current_time = datetime.now(timezone('Asia/Seoul')).strftime("%H:%M")
+
+global now_hour
+
+now_hour = datetime.now(timezone('Asia/Seoul')).strftime("%H")
+
+global now_min
+
+now_min = datetime.now(timezone('Asia/Seoul')).strftime("%M")
+                                                        
 
 global next_time
 
 next_time = "00:00"
-#arst
+
+global next_hour
+
+next_hour = 00
+
+global next_min
+
+next_min = 00
+
+global set_hour
+
+set_hour = 00
+
+global set_min
+
+set_min = 00
+
 @bot.event
 async def on_ready():
     print('다음으로 로그인합니다 : ')
@@ -33,6 +60,7 @@ async def on_ready():
     print('로그인에 성공했습니다')
     print(current_time)
     await cal_time()    
+
 
 def set_next_time():
     global next_time
@@ -111,6 +139,12 @@ async def blade(ctx, member: discord.Member, messageid=int):
         return user == ctx.message.author and str(reaction.emoji) == '👍' or str(reaction.emoji) == '👎'
     try:
         reaction, user = await bot.wait_for('reaction_add', timeout=10.0, check=check)
+        if user == ctx.message.author:
+            reaction, user =await bot.wait_for('reaction_add', timeout=10.0, check=check)
+            await ctx.channel.send("신청자는 투표 할 수 없습니다. 10초 내에 다시 투표해주세요")
+        else:
+            await asyncio.TimeoutError
+
     except asyncio.TimeoutError:
         await ctx.channel.send('👎')
     else:
@@ -155,11 +189,11 @@ async def 지짐시(ctx):
 async def 진정(ctx):
     await ctx.channel.send(f"{ctx.message.mentions[0].mention}, {ctx.message.author.mention}(이)가 진정하래")
 
-#@bot.event #지민 진정 기능
-#async def on_message(message):
-#    if "ㅅㅂ" in message.content: 
-#        msg = await message.channel.send(f"{message.author.mention} 진정")
-#        await asyncio.sleep(0.5)
-#        await msg.delete()
+@bot.event #지민 진정 기능
+async def on_message(message):
+    if "ㅅㅂ" in message.content: 
+        msg = await message.channel.send(f"{message.author.mention} 진정")
+        await asyncio.sleep(0.5)
+        await msg.delete()
 
 bot.run(os.getenv('TOKEN'))
