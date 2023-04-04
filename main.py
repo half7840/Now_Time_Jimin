@@ -20,45 +20,12 @@ load_dotenv()
 intents = discord.Intents().all()
 bot = commands.Bot(intents=intents, command_prefix="!")
 
-global current_time
-
-current_time = datetime.now(timezone('Asia/Seoul')).strftime("%H:%M")
-
-global now_hour
-
-now_hour = datetime.now(timezone('Asia/Seoul')).strftime("%H")
-
-global now_min
-
-now_min = datetime.now(timezone('Asia/Seoul')).strftime("%M")
-
-
-global next_time
-
-next_time = "00:00"
-
-global next_hour
-
-next_hour = 00
-
-global next_min
-
-next_min = 00
-
-global set_hour
-
-set_hour = 00
-
-global set_min
-
-set_min = 00
 
 @bot.event
 async def on_ready():
     print('다음으로 로그인합니다 : ')
     print(bot.user.name)
     print('로그인에 성공했습니다')
-    print(current_time)
     await now_time_jimin()
 
 @bot.event
