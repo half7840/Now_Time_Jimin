@@ -24,7 +24,7 @@ bot = discord.Bot(intents=intents, command_prefix="!")
 
 openai.api_key = (os.getenv("OPENAI"))
 
-SERVER_IDS = [915862213074493540]
+SERVER_IDS = ["SERVER"]
 
 
 #@bot.event
@@ -37,7 +37,7 @@ SERVER_IDS = [915862213074493540]
 @bot.event
 async def now_time_jimin():
     await bot.wait_until_ready()
-    channel = bot.get_channel(915862213074493543)
+    channel = bot.get_channel("CHANNEL")
     while not bot.is_closed():
         now = datetime.now(timezone('Asia/Seoul')).strftime('%H:%M')
         if now == '1:11' or now == '2:22' or now =='3:33' or now =='4:44' or now == '5:55' or now == '10:10' or now == '11:11' or now == '12:12' or now == '13:11' or now == '14:22' or now == '15:33' or now == '16:44' or now == '17:55' or now == '22:10' or now == '23:11':
