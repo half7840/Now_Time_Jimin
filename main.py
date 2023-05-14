@@ -27,26 +27,41 @@ openai.api_key = (os.getenv("OPENAI"))
 SERVER_IDS = ["SERVER"]
 
 
-#@bot.event
-#async def on_ready():
-#    print('다음으로 로그인합니다 : ')
-#    print(bot.user.name)
-#    print('로그인에 성공했습니다')
-#    await now_time_jimin()
 
 @bot.event
 async def now_time_jimin():
-    await bot.wait_until_ready()
-    channel = bot.get_channel("CHANNEL")
+    channel = bot.get_channel(915862213074493543)
     while not bot.is_closed():
         now = datetime.now(timezone('Asia/Seoul')).strftime('%H:%M')
-        if now == '1:11' or now == '2:22' or now =='3:33' or now =='4:44' or now == '5:55' or now == '10:10' or now == '11:11' or now == '12:12' or now == '13:11' or now == '14:22' or now == '15:33' or now == '16:44' or now == '17:55' or now == '22:10' or now == '23:11':
-            await channel.send("**지짐시**")
-            await asyncio.sleep(60)
-            await now_time_jimin()
-        else:
-            await asyncio.sleep(55)
+        if now in ["01:11", "02:22", "03:33", "04:44", "05:55",
+                   "10:10", "11:11", "12:12", "13:11", "14:22",
+                   "15:33", "16:44", "17:55", "22:10", "23:11"]:
+            await ctx.channel.send("지짐시")  # 메시지를 보냅니다.
+        await asyncio.sleep(60 - datetime.now().second % 60)
 
+@bot.slash_command(name="지짐시", description="다음 지짐시 알려줍니다.")
+async def send_next_jijimshi(ctx):
+    now = datetime.now()
+    hour = now.hour
+    minute = now.minute
+    next_times = [
+        (1, 11), (2, 22), (3, 33), (4, 44), (5, 55),
+        (10, 10), (11, 11), (12, 12), (13, 11), (14, 22),
+        (15, 33), (16, 44), (17, 55), (22, 10), (23, 11),
+    ]
+    next_time = None
+    for time in next_times:
+        if hour < time[0] or (hour == time[0] and minute < time[1]):
+            next_time = time
+            break
+    if next_time:
+        next_hour, next_minute = next_time
+        next_datetime = datetime(now.year, now.month, now.day, next_hour, next_minute)
+        time_diff = next_datetime - now
+        message = f"다음 지짐시는 {next_hour}시 {next_minute}분이며, {time_diff.seconds // 3600}시간 {time_diff.seconds % 3600 // 60}분 후에 보내집니다."
+    else:
+        message = "오늘은 더 이상 지짐시가 없습니다."
+    await ctx.send(message)
 
 history = dict()
 
